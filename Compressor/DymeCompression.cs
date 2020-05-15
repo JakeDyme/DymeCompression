@@ -102,7 +102,7 @@ namespace Dyme.Compression
 				{
 					i++; //...skip original character.
 					byte[] repetitionLengthByteArray = new byte[]{ inputBuffer[++i], inputBuffer[++i] };
-					var repetitionLength = BitConverter.ToInt16(repetitionLengthByteArray);
+					var repetitionLength = BitConverter.ToInt16(repetitionLengthByteArray, 0);
 					newBufferLength += repetitionLength;
 				}
 				else
@@ -123,7 +123,7 @@ namespace Dyme.Compression
 					//   - and the next 2 bytes(UInt16) are the length of the repetition
 					var originalCharacter = inputBuffer[++i];
 					var repetitionLengthByteArray = new byte[] { inputBuffer[++i], inputBuffer[++i] };
-					var repetitionLength = BitConverter.ToInt16(repetitionLengthByteArray);
+					var repetitionLength = BitConverter.ToInt16(repetitionLengthByteArray, 0);
 					for (var x = 0; x < repetitionLength; x++)
 					{
 						newBuffer[newBufferCounter++] = originalCharacter;
