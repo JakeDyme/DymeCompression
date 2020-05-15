@@ -1,15 +1,15 @@
 ﻿using System;
 
-namespace DymeCompression
+namespace Dyme.Compression
 {
-	public class SequenceCompressorDropIns
+	public class DymeCompressionDropIns
 	{
 		/// <summary>
 		/// Drop-in functions for your code.
 		/// </summary>
 		/// <param name="inputString"></param>
 		/// <returns></returns>
-		public static string CompressString(string inputString)
+		public static string Compress(string inputString)
 		{
 			byte flagByte = 1;
 			const ushort COMPRESSION_THRESHOLD = 4;
@@ -60,14 +60,14 @@ namespace DymeCompression
 			return newString;
 		}
 
-		public static string DecompressString(string inputString)
+		public static string Decompress(string compressedString)
 		{
 			byte flagByte = 1;
-			if (inputString.Length < 4) return inputString;
-			var inputBuffer = new byte[inputString.Length];
-			for (var i = 0; i < inputString.Length; i++)
-				inputBuffer[i] = Convert.ToByte(inputString[i]);
-			var inputBufferLength = inputString.Length;
+			if (compressedString.Length < 4) return compressedString;
+			var inputBuffer = new byte[compressedString.Length];
+			for (var i = 0; i < compressedString.Length; i++)
+				inputBuffer[i] = Convert.ToByte(compressedString[i]);
+			var inputBufferLength = compressedString.Length;
 			int newBufferLength = 0;
 			for (var i = 0; i < inputBufferLength; i++)
 			{

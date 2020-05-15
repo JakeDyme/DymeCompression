@@ -1,10 +1,9 @@
-﻿using DymeCompression;
+﻿using Dyme.Compression;
 using NUnit.Framework;
-using System.IO;
 
 namespace Compressor_Tests
 {
-	class SequenceCompressorDropIns_Tests
+	class DymeCompressionDropIns_Tests
 	{
 		[Test]
 		public void DoesNotCompress0()
@@ -15,7 +14,7 @@ namespace Compressor_Tests
 			var expectedCompressedLength = 0;
 
 			// Act...
-			var result = SequenceCompressorDropIns.CompressString(inputString);
+			var result = DymeCompressionDropIns.Compress(inputString);
 
 			// Assert...
 			Assert.AreEqual(expectedCompressedLength, result.Length);
@@ -30,7 +29,7 @@ namespace Compressor_Tests
 			var expectedCompressedLength = 3;
 
 			// Act...
-			var result = SequenceCompressorDropIns.CompressString(inputString);
+			var result = DymeCompressionDropIns.Compress(inputString);
 
 			// Assert...
 			Assert.AreEqual(expectedCompressedLength, result.Length);
@@ -45,7 +44,7 @@ namespace Compressor_Tests
 			var expectedCompressedLength = 4;
 
 			// Act...
-			var result = SequenceCompressorDropIns.CompressString(inputString);
+			var result = DymeCompressionDropIns.Compress(inputString);
 
 			// Assert...
 			Assert.AreEqual(expectedCompressedLength, result.Length);
@@ -60,7 +59,7 @@ namespace Compressor_Tests
 			var expectedCompressedLength = 4;
 			
 			// Act...
-			var result = SequenceCompressorDropIns.CompressString(inputString);
+			var result = DymeCompressionDropIns.Compress(inputString);
 
 			// Assert...
 			Assert.AreEqual(expectedCompressedLength, result.Length);
@@ -75,7 +74,7 @@ namespace Compressor_Tests
 			var expectedCompressedLength = 4;
 
 			// Act...
-			var result = SequenceCompressorDropIns.CompressString(inputString);
+			var result = DymeCompressionDropIns.Compress(inputString);
 
 			// Assert...
 			Assert.AreEqual(expectedCompressedLength, result.Length);
@@ -90,7 +89,7 @@ namespace Compressor_Tests
 			var expectedCompressedLength = 5;
 
 			// Act...
-			var result = SequenceCompressorDropIns.CompressString(inputString);
+			var result = DymeCompressionDropIns.Compress(inputString);
 
 			// Assert...
 			Assert.AreEqual(expectedCompressedLength, result.Length);
@@ -105,7 +104,7 @@ namespace Compressor_Tests
 			var expectedCompressedLength = 5;
 
 			// Act...
-			var result = SequenceCompressorDropIns.CompressString(inputString);
+			var result = DymeCompressionDropIns.Compress(inputString);
 
 			// Assert...
 			Assert.AreEqual(expectedCompressedLength, result.Length);
@@ -120,7 +119,7 @@ namespace Compressor_Tests
 			var expectedCompressedLength = 6;
 
 			// Act...
-			var result = SequenceCompressorDropIns.CompressString(inputString);
+			var result = DymeCompressionDropIns.Compress(inputString);
 
 			// Assert...
 			Assert.AreEqual(expectedCompressedLength, result.Length);
@@ -135,7 +134,7 @@ namespace Compressor_Tests
 			var expectedCompressedLength = 8;
 
 			// Act...
-			var result = SequenceCompressorDropIns.CompressString(inputString);
+			var result = DymeCompressionDropIns.Compress(inputString);
 
 			// Assert...
 			Assert.AreEqual(expectedCompressedLength, result.Length);
@@ -150,7 +149,7 @@ namespace Compressor_Tests
 			var expectedCompressedLength = 10;
 
 			// Act...
-			var result = SequenceCompressorDropIns.CompressString(inputString);
+			var result = DymeCompressionDropIns.Compress(inputString);
 
 			// Assert...
 			Assert.AreEqual(expectedCompressedLength, result.Length);
@@ -165,7 +164,7 @@ namespace Compressor_Tests
 			var expectedCompressedLength = 11;
 
 			// Act...
-			var result = SequenceCompressorDropIns.CompressString(inputString);
+			var result = DymeCompressionDropIns.Compress(inputString);
 
 			// Assert...
 			Assert.AreEqual(expectedCompressedLength, result.Length);
@@ -179,8 +178,8 @@ namespace Compressor_Tests
 			var inputString = "";
 
 			// Act...
-			var compressedString = SequenceCompressorDropIns.CompressString(inputString);
-			var result = SequenceCompressorDropIns.DecompressString(compressedString);
+			var compressedString = DymeCompressionDropIns.Compress(inputString);
+			var result = DymeCompressionDropIns.Decompress(compressedString);
 
 			// Assert...
 			Assert.AreEqual(inputString, result);
@@ -194,8 +193,8 @@ namespace Compressor_Tests
 			var inputString = "aaa";
 
 			// Act...
-			var compressedString = SequenceCompressorDropIns.CompressString(inputString);
-			var result = SequenceCompressorDropIns.DecompressString(compressedString);
+			var compressedString = DymeCompressionDropIns.Compress(inputString);
+			var result = DymeCompressionDropIns.Decompress(compressedString);
 
 			// Assert...
 			Assert.AreEqual(inputString, result);
@@ -209,8 +208,8 @@ namespace Compressor_Tests
 			var inputString = "aaaa";
 
 			// Act...
-			var compressedString = SequenceCompressorDropIns.CompressString(inputString);
-			var result = SequenceCompressorDropIns.DecompressString(compressedString);
+			var compressedString = DymeCompressionDropIns.Compress(inputString);
+			var result = DymeCompressionDropIns.Decompress(compressedString);
 
 			// Assert...
 			Assert.AreEqual(inputString, result);
@@ -224,8 +223,8 @@ namespace Compressor_Tests
 			var inputString = "aaaaa";
 
 			// Act...
-			var compressedString = SequenceCompressorDropIns.CompressString(inputString);
-			var result = SequenceCompressorDropIns.DecompressString(compressedString);
+			var compressedString = DymeCompressionDropIns.Compress(inputString);
+			var result = DymeCompressionDropIns.Decompress(compressedString);
 
 			// Assert...
 			Assert.AreEqual(inputString, result);
@@ -239,8 +238,8 @@ namespace Compressor_Tests
 			var inputString = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
 			// Act...
-			var compressedString = SequenceCompressorDropIns.CompressString(inputString);
-			var result = SequenceCompressorDropIns.DecompressString(compressedString);
+			var compressedString = DymeCompressionDropIns.Compress(inputString);
+			var result = DymeCompressionDropIns.Decompress(compressedString);
 
 			// Assert...
 			Assert.AreEqual(inputString, result);
@@ -254,8 +253,8 @@ namespace Compressor_Tests
 			var inputString = "aaaaab";
 
 			// Act...
-			var compressedString = SequenceCompressorDropIns.CompressString(inputString);
-			var result = SequenceCompressorDropIns.DecompressString(compressedString);
+			var compressedString = DymeCompressionDropIns.Compress(inputString);
+			var result = DymeCompressionDropIns.Decompress(compressedString);
 
 			// Assert...
 			Assert.AreEqual(inputString, result);
@@ -269,8 +268,8 @@ namespace Compressor_Tests
 			var inputString = "baaaaa";
 
 			// Act...
-			var compressedString = SequenceCompressorDropIns.CompressString(inputString);
-			var result = SequenceCompressorDropIns.DecompressString(compressedString);
+			var compressedString = DymeCompressionDropIns.Compress(inputString);
+			var result = DymeCompressionDropIns.Decompress(compressedString);
 
 			// Assert...
 			Assert.AreEqual(inputString, result);
@@ -284,8 +283,8 @@ namespace Compressor_Tests
 			var inputString = "baaaaab";
 
 			// Act...
-			var compressedString = SequenceCompressorDropIns.CompressString(inputString);
-			var result = SequenceCompressorDropIns.DecompressString(compressedString);
+			var compressedString = DymeCompressionDropIns.Compress(inputString);
+			var result = DymeCompressionDropIns.Decompress(compressedString);
 
 			// Assert...
 			Assert.AreEqual(inputString, result);
@@ -299,8 +298,8 @@ namespace Compressor_Tests
 			var inputString = "aaaaabbbbb";
 
 			// Act...
-			var compressedString = SequenceCompressorDropIns.CompressString(inputString);
-			var result = SequenceCompressorDropIns.DecompressString(compressedString);
+			var compressedString = DymeCompressionDropIns.Compress(inputString);
+			var result = DymeCompressionDropIns.Decompress(compressedString);
 
 			// Assert...
 			Assert.AreEqual(inputString, result);
@@ -314,8 +313,8 @@ namespace Compressor_Tests
 			var inputString = "caaaaabbbbbc";
 
 			// Act...
-			var compressedString = SequenceCompressorDropIns.CompressString(inputString);
-			var result = SequenceCompressorDropIns.DecompressString(compressedString);
+			var compressedString = DymeCompressionDropIns.Compress(inputString);
+			var result = DymeCompressionDropIns.Decompress(compressedString);
 
 			// Assert...
 			Assert.AreEqual(inputString, result);
@@ -329,8 +328,8 @@ namespace Compressor_Tests
 			var inputString = "caaaaacbbbbbc";
 
 			// Act...
-			var compressedString = SequenceCompressorDropIns.CompressString(inputString);
-			var result = SequenceCompressorDropIns.DecompressString(compressedString);
+			var compressedString = DymeCompressionDropIns.Compress(inputString);
+			var result = DymeCompressionDropIns.Decompress(compressedString);
 
 			// Assert...
 			Assert.AreEqual(inputString, result);

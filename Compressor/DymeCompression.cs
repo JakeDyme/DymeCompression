@@ -1,27 +1,27 @@
 ﻿using System;
 
-namespace DymeCompression
+namespace Dyme.Compression
 {
-	public class SequenceCompressor
+	public class DymeCompression
 	{
 		byte _flagByte;
 
-		public SequenceCompressor(byte flagByte)
+		public DymeCompression(byte flagByte)
 		{
 			_flagByte = flagByte;
 		}
 
-		public SequenceCompressor(char flagChar)
+		public DymeCompression(char flagChar)
 		{
 			_flagByte = Convert.ToByte(flagChar);
 		}
 
-		public SequenceCompressor()
+		public DymeCompression()
 		{
 			_flagByte = 1;
 		}
 
-		public string CompressString(string inputString)
+		public string Compress(string inputString)
 		{
 			// If its 4 bytes or less then theres no point in compressing 
 			// since a compression token is 4 bytes long.
@@ -39,7 +39,7 @@ namespace DymeCompression
 			return newString;
 		}
 
-		public string DecompressString(string inputString)
+		public string Decompress(string inputString)
 		{
 			// If the string is less than 4 bytes then there cannot be any compression applied
 			// since a compression token is at least 4 bytes long.
@@ -55,6 +55,42 @@ namespace DymeCompression
 			string newString = StringFromBuffer(newBuffer, newBuffer.Length);
 
 			return newString;
+		}
+
+		public byte[] Compress(byte[] input)
+		{
+			// If its 4 bytes or less then theres no point in compressing 
+			// since a compression token is 4 bytes long.
+			if (input.Length < 5) return input;
+
+			// Compress...
+			int newBufferLength = SequenceCompressAndReturnNewBufferLength(ref input, input.Length);
+
+			byte[] finalBuffer = ResizeBuffer(input, newBufferLength);
+
+			return finalBuffer;
+		}
+
+		public byte[] Decompress(byte[] input)
+		{
+			// If the string is less than 4 bytes then there cannot be any compression applied
+			// since a compression token is at least 4 bytes long.
+			if (input.Length < 4) return input;
+
+			// Decompress...
+			byte[] newBuffer = SequenceDecompressBytes(input, input.Length);
+
+			return newBuffer;
+		}
+
+		private byte[] ResizeBuffer(byte[] input, int newBufferLength)
+		{
+			byte[] newBuffer = new byte[newBufferLength];
+			for (var i = 0; i < newBufferLength; i++)
+			{
+				newBuffer[i] = input[i];
+			}
+			return newBuffer;
 		}
 
 		public byte[] SequenceDecompressBytes(byte[] inputBuffer, int inputBufferLength)
