@@ -109,7 +109,19 @@ public static string Decompress(string compressedString)
 }
 ~~~
 
-# Limitations
+# Limitations 
+*(limitations are for the drop-in's only, the base code now supports custom flag characters and text-safe options)*
 - The compression token uses a 2 byte unsigned integer to record the repetitions. Which means that it cannot record sequences longer than 65,535 characters. I haven't built in any checks for this, but if its a real problem for you then let me know and I'll put some checks in.
 
 - A "flag byte" is used to seperate compressed content from uncompressed content within a compressed file. I've just chosen an arbitrary byte '1' (Start-Of-Heading in ASCII) which I don't think ever really occurs in normal string content, but it is possible that your data may already have this byte in it. In which case, some unsettling things might happen, as the function will try to decompress things that it shouldn't. Anyway you can set the flagByte to whatever you want, as long as its not 0 and below 256 (not any byte thats going to occur in your string).
+
+# Options
+If you are intending to put the compressed blob inside of a structured document then it is recommended to Base-64 encode your raw data, use text-safe option, and use a document-friendly character (outside the B64 encoding range, like a comma, pipe, etc) as a custom-flag-byte character.
+
+## Text-Safe
+
+Without Text-Safe enabled sequence lengths are represented by byte codes. (Not good for syntactical documents such as XML and JSON). The Text-safe option forces the encoder to use Alpha-numeric ASCII number representations which are syntax friendly. In other words, you should use terxt-safe if you plan to to put the encoded blob into an XML or JSON file.
+There is a penalty for this so if you're just putting the data in and out of its own file, then you don't need to use text-safe.
+
+## Custom flag byte
+You can now specify what character to use as a sequence flag. This is useful if you're wanting to use text-safe characters. The default flag byte in 00000001 (START OF HEADING is ASCII), this is not a document friendly character, if you want to use a custom character to represent sequences instead (like a pipe or comma), then you can specify it in the custom flag byte. Note thought the whatever character you use cannot already exist in the data.

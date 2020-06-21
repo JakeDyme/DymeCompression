@@ -16,4 +16,23 @@
     <ProjectReference Include="..\Compressor\Compressor.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TestFiles\UncompressedImages\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TestFiles\UncompressedImages\1_Chair_Filled.1K_1K_24RGB.bytes">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestFiles\UncompressedImages\1_Chair_Filled_Example.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestFiles\UncompressedImages\2_Chair_NotFilled.1K_1K_24RGB.bytes">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestFiles\UncompressedImages\2_Chair_NotFilled_Example.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
